@@ -36,12 +36,10 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
          
-      <!--begin::Header-->
-     @include('partials.home-header')
-      <!--end::Header-->
+    
 
       <!--begin::Sidebar-->
-
+      @include('partials.intructor-sidebar')
       <!--end::Sidebar-->
 
 
