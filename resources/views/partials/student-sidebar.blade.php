@@ -57,7 +57,7 @@
 
                 <!-- Settings Section -->
                 <li class="nav-item">
-                    <a href="#student-settings" class="nav-link">
+                    <a href="{{ route('student.settings') }}" class="nav-link">
                         <i class="nav-icon bi bi-gear"></i>
                         <p>Settings</p>
                     </a>

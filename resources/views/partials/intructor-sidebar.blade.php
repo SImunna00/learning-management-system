@@ -66,7 +66,7 @@
 
                 <!-- Profile Section -->
                 <li class="nav-item">
-                    <a href="#instructor-profile" class="nav-link">
+                    <a href="{{ route('instructor.profile') }}" class="nav-link">
                         <i class="nav-icon bi bi-person"></i>
                         <p>Profile</p>
                     </a>
@@ -74,7 +74,7 @@
 
                 <!-- Settings Section -->
                 <li class="nav-item">
-                    <a href="#instructor-settings" class="nav-link">
+                    <a href="{{ route('instructor.settings') }}" class="nav-link">
                         <i class="nav-icon bi bi-gear"></i>
                         <p>Settings</p>
                     </a>

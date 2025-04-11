@@ -36,12 +36,12 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
          
-        @include('partials.student-header')
-
+      <!--begin::Header-->
+     @include('partials.header')
+      <!--end::Header-->
 
       <!--begin::Sidebar-->
 
-      @include('partials.student-sidebar')
       <!--end::Sidebar-->
 
 

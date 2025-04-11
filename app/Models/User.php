@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role', 
+        'phone',
+        'photo'
     ];
 
     /**
@@ -45,5 +47,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relationship with Enrollments (many-to-many)
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class, 'user_id');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.students')
+@extends('layouts.instructors')
 
 @section('title', 'Profile')
 
@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <!-- Profile Update Form -->
-                    <form method="POST" enctype="multipart/form-data" action="{{ route('student.profile.store') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('instructor.profile.store') }}">
                         @csrf
 
                         <!-- Full Name Field -->
@@ -25,8 +25,6 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        
-
 
                         <!-- Email Field -->
                         <div class="mb-4">

@@ -18,7 +18,7 @@
     />
 
 
-    
+
 
   
 
@@ -36,7 +36,9 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
          
-    
+     <!--begin::Header-->
+     @include('partials.instructor-header')
+      <!--end::Header-->
 
       <!--begin::Sidebar-->
       @include('partials.intructor-sidebar')
