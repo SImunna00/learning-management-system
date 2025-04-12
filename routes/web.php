@@ -4,12 +4,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\mainController;
 use Illuminate\Support\Facades\Route;
 
 // Home page
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [MainController::class, 'index'])->name('home');
+
+Route::get('/courses/{id}', [MainController::class, 'show'])->name('course.show');
+
+Route::get('/course',[mainController::class,'course'])->name('course');
+
+Route::middleware('auth')->post('/courses/{id}/enroll', [MainController::class, 'enroll'])->name('course.enroll');
 
 // Authenticated routes
 Route::middleware(['auth'])->group(function () {
@@ -42,17 +47,20 @@ Route::middleware(['auth'])->group(function () {
     )->name('student.available.course');
 
     Route::post('/student/courses/{id}/enroll', [StudentController::class, 'enroll'])->name('student.course.enroll');
+    Route::get('/student/courses/{id}', [StudentController::class, 'show'])->name('student.course.show');
 
     //  *** *** *** Student routes *** *** ***-------------------//
 
     /*          *** *** *** Instructor      *** *** ***                            */
     // Instructor dashboard
-    Route::get('/instructor/dashboard', fn () => view('instructor.dashboard'))->name('instructor.dashboard');
+    Route::get('/instructor/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
     
     // Instructor features
     Route::get('/instructor/manage-assignments', [InstructorController::class, 'manage_assignments'])->name('instructor.manage.assignments');
 
-    Route::get('/instructor/view-students', [InstructorController::class, 'view_students'])->name('instructor.view.students');
+   
+
+    Route::get('/instructor/view-students/{courseId}', [InstructorController::class, 'viewStudents'])->name('instructor.view.students');
 
     Route::get('/instructor/profile', [InstructorController::class, 'profile'])->name('instructor.profile');
 

@@ -5,15 +5,17 @@
         <a href="/" class="brand-link">
             <!--begin::Brand Image-->
             <img
-                src="../../dist/assets/img/AdminLTELogo.png"
+                src="{{ asset('assests/image/Untitled design.png') }}"
                 alt="AdminLTE Logo"
-                class="brand-image opacity-75 shadow"
+                class="brand-image opacity-75 shadow img-fluid w-100 h-auto"
+                 style="object-fit: contain;"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
             
             <!--end::Brand Text-->
         </a>
+        
         <!--end::Brand Link-->
     </div>
     <!--end::Sidebar Brand-->

@@ -5,9 +5,10 @@
         <a href="/" class="brand-link">
             <!--begin::Brand Image-->
             <img
-                src="../../dist/assets/img/AdminLTELogo.png"
+                src="{{ asset('assests/image/Untitled design.png') }}"
                 alt="AdminLTE Logo"
-                class="brand-image opacity-75 shadow"
+                class="brand-image opacity-75 shadow img-fluid w-100 h-auto"
+                 style="object-fit: contain;"
             />
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
@@ -41,28 +42,13 @@
                 </li>
 
                 <!-- View Enrolled Students Section -->
-                <li class="nav-item">
-                    <a href="{{ route('instructor.view.students') }}" class="nav-link">
-                        <i class="nav-icon bi bi-person-lines-fill"></i>
-                        <p>View Students</p>
-                    </a>
-                </li>
+              
 
                 <!-- Assignments Management Section -->
-                <li class="nav-item">
-                    <a href="{{ route('instructor.manage.assignments') }}" class="nav-link">
-                        <i class="nav-icon bi bi-pencil"></i>
-                        <p>Manage Assignments</p>
-                    </a>
-                </li>
+               
 
                 <!-- Reports Section -->
-                <li class="nav-item">
-                    <a href="#instructor-reports" class="nav-link">
-                        <i class="nav-icon bi bi-bar-chart"></i>
-                        <p>Reports</p>
-                    </a>
-                </li>
+               
 
                 <!-- Profile Section -->
                 <li class="nav-item">

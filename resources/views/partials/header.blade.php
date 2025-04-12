@@ -33,11 +33,7 @@
             </li>
 
             <!-- Search Icon -->
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#" title="Search">
-                    <i class="bi bi-search"></i>
-                </a>
-            </li>
+          
 
             <!-- Fullscreen Toggle -->
             <li class="nav-item">

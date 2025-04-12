@@ -12,25 +12,19 @@
 
             <!-- Home -->
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{ route('home') }}">
                     <i class="bi bi-house-door me-1"></i> Home
                 </a>
             </li>
 
             <!-- Courses -->
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">
+                <a class="nav-link text-white" href="{{ route('course') }}">
                     <i class="bi bi-journal-bookmark me-1"></i> Courses
                 </a>
             </li>
 
-            <!-- Search Icon -->
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#" title="Search">
-                    <i class="bi bi-search"></i>
-                </a>
-            </li>
-
+         
             <!-- Fullscreen Toggle -->
             <li class="nav-item">
               <a class="nav-link text-white" href="#" data-lte-toggle="fullscreen">

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\Course;
+
 class InstructorController extends Controller
 {
     //
@@ -18,10 +20,7 @@ class InstructorController extends Controller
         return view('instructor.manage-assignments');
     }
 
-    public function view_students()
-    {
-        return view('instructor.view-students');
-    }
+    
 
 
     // profile view
@@ -87,5 +86,23 @@ class InstructorController extends Controller
         
         }
 
+        public function dashboard()
+    {
+        // Get all courses for the instructor
+        $instructorId = auth()->user()->id;
+        $courses = Course::where('instructor_id', $instructorId)->get();
 
+        return view('instructor.dashboard', compact('courses'));
+    }
+
+    public function viewStudents($courseId)
+    {
+        // Get course with its enrolled students
+        $course = Course::with('students')->findOrFail($courseId);
+        
+        // Get the number of students enrolled in this course
+        $studentCount = $course->students->count();
+    
+        return view('instructor.view-students', compact('course', 'studentCount'));
+    }
 }

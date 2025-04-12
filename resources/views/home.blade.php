@@ -30,7 +30,7 @@ body {
 /* Subtitle */
 .home-subtitle {
     font-size: 1.125rem;
-    color: #555;
+    color: wheat;
     margin-bottom: 30px;
 }
 
@@ -66,17 +66,22 @@ body {
 @endpush
 
 @section('content')
-
-
-<div class="container home-container">
-    <h1 class="home-title">Welcome to the<br>Learning Management System</h1>
-    <p class="home-subtitle">Your gateway to online education.</p>
+<div class="home-container" style="background-image: url('{{ asset('assests/image/bg-image.png') }}'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: left; text-align: center; color: #fff;">
+   
+    <p class="home-subtitle" style="font-size: 1.5rem; text-shadow: 2px 2px 5px rgba(242, 236, 236, 0.91); margin-bottom: 40px;">
+        Your gateway to online education.
+    </p>
 
     <div class="home-buttons d-flex justify-content-center gap-3">
-        <a href="#" class="btn btn-primary">Browse Courses</a>
-        <a href="{{ route('register') }}" class="btn btn-outline-secondary">Get Started</a>
+        <a href="{{ route('course') }}" class="btn btn-primary" style="font-size: 1.2rem; padding: 12px 24px; background-color:rgb(22, 80, 141); border-color: #007BFF; border-radius: 25px;">
+            Browse Courses
+        </a>
+        <a href="{{ route('register') }}" class="btn btn-outline-secondary" style="font-size: 1.2rem; padding: 12px 24px; background-color: rgb(22, 80, 141);; border-color: #007BFF; border-radius: 25px; color:rgb(231, 235, 239);">
+            Get Started
+        </a>
     </div>
 </div>
+
 
 
 <div class="container my-5">
@@ -84,16 +89,32 @@ body {
 
     <div class="row justify-content-center g-4">
         
-            <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-img-top bg-light" style="height: 120px; border-radius: 6px;"></div>
-                    <div class="card-body text-center">
-                        <h6 class="card-title fw-bold">Course Title</h6>
-                        <p class="card-text text-muted">Short description of the course.</p>
-                        <a href="#" class="btn btn-primary btn-sm">Manage Course</a>
+    @foreach($courses as $course)
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top" alt="{{ $course->title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">  <span style="font-weight:bold">Title:  {{ $course->title }}</span></h5><br>
+                        <p class="card-text">{{ Str::limit($course->description, 100) }}</p>
+                        <a href="{{ route('course.show', $course->id) }}" class="btn btn-info">View Details</a>
+
+                        <!-- Enroll button only available to logged-in users -->
+                        @auth
+                            @if(auth()->user()->enrollments->contains($course))
+                                <button class="btn btn-success" disabled>Already Enrolled</button>
+                            @else
+                                <form action="{{ route('course.enroll', $course->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Enroll</button>
+                                </form>
+                            @endif
+                        @else
+                            <a href="{{ route('login') }}" class="btn btn-outline-primary"> Enroll</a>
+                        @endauth
                     </div>
                 </div>
             </div>
+        @endforeach
 
 
          

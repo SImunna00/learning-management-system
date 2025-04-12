@@ -129,4 +129,10 @@ class StudentController extends Controller
         return view('student.courses', compact('enrolledCourses'));
     }
 
+    public function show($id)
+{
+    $course = Course::findOrFail($id); // Fetch the course by ID
+    return view('student.show', compact('course')); // Return the view with course details
+}
+
 }
