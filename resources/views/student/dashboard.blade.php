@@ -1,5 +1,5 @@
 @extends('layouts.students')
-
+@section('title', 'Studdent-Dashboard')
 
 
 @push('style')

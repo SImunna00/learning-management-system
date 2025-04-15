@@ -13,12 +13,12 @@ class Enrollment extends Model
     // Define relationship with User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
      // Define relationship with Course
      public function course()
      {
-         return $this->belongsTo(Course::class);
+         return $this->belongsTo(Course::class, 'course_id');
      }
 }
