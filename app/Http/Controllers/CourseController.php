@@ -67,6 +67,7 @@ class CourseController extends Controller
 
     //update
     public function update(Request $request, $id)
+
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -76,7 +77,18 @@ class CourseController extends Controller
             'image' => 'nullable|image|max:2048'
         ]);
 
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'course_code' => 'required|string|max:100',
+        'description' => 'required',
+        'media' => 'nullable|file|max:5120',
+        'image' => 'nullable|image|max:2048'
+    ]);
+
+
         $course = Course::findOrFail($id);
+
 
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('course_images', 'public');
@@ -85,6 +97,16 @@ class CourseController extends Controller
 
         $course->update($validated);
         return redirect()->route('instructor.manage.courses')->with('success', 'Course updated successfully');
+    if ($request->hasFile('media')) {
+        $mediaPath = $request->file('media')->store('courses/media', 'public');
+        $validated['media'] = $mediaPath;  // Store the valid file path in the database
+    }
+
+    // Handle image upload (if applicable)
+    if ($request->hasFile('image')) {
+        $imagePath = $request->file('image')->store('courses/images', 'public');
+        $validated['image'] = $imagePath;  // Store the valid image path in the database
+
     }
 
 

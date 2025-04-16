@@ -11,7 +11,7 @@ class MainController extends Controller
     // Show all available courses (open to all users)
     public function index()
     {
-        $courses = Course::all(); // Get all courses
+        $courses = Course::all(); // Get all from the  courses course
         return view('home', compact('courses')); // Return the homepage with courses
     }
 
